@@ -1,1 +1,5 @@
-yarn precommit
+#!/bin/sh
+. "$(dirname "$0")/husky.sh"
+
+
+yarn precommmit
