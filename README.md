@@ -1,4 +1,4 @@
-# ignews
+# dashgo
 
 Building 👨‍💻 dashboard of an administrative panel, with authentication, registration and listing. Built with Next JS and ChakraUI
 
