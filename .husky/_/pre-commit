@@ -2,4 +2,4 @@
 . "$(dirname "$0")/husky.sh"
 
 
-yarn precommmit
+npx lint-staged
