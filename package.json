@@ -43,7 +43,7 @@
     "check-types": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lintFix": "eslint ./ --fix",
-    "precommit": "npm run check-format && npm run check-lint && npm run check-types && npm run format && npm run lintFix",
+    "precommit": "npm run check-lint && npm run check-types && npm run format && npm run lintFix",
     "prepare": "husky install"
   }
 }
