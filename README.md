@@ -2,15 +2,9 @@
 
 Building 👨‍💻 dashboard of an administrative panel, with authentication, registration and listing. Built with Next JS and ChakraUI
 
-
-
 ## How was it developed?
 
-
-
 #### architecture:
-
-
 
 ## Tools used
 
@@ -22,13 +16,9 @@ Typescript
 
 ChakraUI
 
-
-
 ## running the application locally
 
-To run next, just give the command `yarn dev` and the front end application will listen on **port: 3000**. 
-
-
+To run next, just give the command `yarn dev` and the front end application will listen on **port: 3000**.
 
 ## Developer
 
