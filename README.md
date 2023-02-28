@@ -10,11 +10,13 @@ Building 👨‍💻 dashboard of an administrative panel, with authentication, 
 
 Next JS (CSR, SSR, SSG)
 
-React
+React (Hooks, React Query)
 
 Typescript
 
 ChakraUI
+
+ApexCharts JS (graphics rendering library)
 
 ## running the application locally
 
