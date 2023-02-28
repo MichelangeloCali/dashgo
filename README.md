@@ -18,6 +18,8 @@ ChakraUI
 
 ApexCharts JS (graphics rendering library)
 
+Mirage JS (fake API)
+
 ## running the application locally
 
 To run next, just give the command `yarn dev` and the front end application will listen on **port: 3000**.
