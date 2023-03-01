@@ -18,6 +18,8 @@ ChakraUI
 
 ApexCharts JS (graphics rendering library)
 
+React Query lib
+
 Mirage JS (fake API)
 
 Faker JS (generate massive amounts of fake data)
