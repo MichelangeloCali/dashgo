@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import {
   Box,
   Button,
@@ -22,13 +22,35 @@ import { RiAddLine } from 'react-icons/ri'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
 import { Pagination } from '../../components/Pagination'
+import { User } from '@/services/mirage'
+
+interface UserFetching extends User {
+  id: string
+  createdAt: string
+}
 
 const UserList = () => {
-  const { data, isLoading, error } = useQuery(['users'], async () => {
-    const response = await fetch('http://localhost:3000/api/users')
-    const data = await response.json()
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['users'],
+    queryFn: async () => {
+      const data = await fetch('http://localhost:3000/api/users').then((res) =>
+        res.json()
+      )
+      const users = data.users.map((user: UserFetching) => {
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          }),
+        }
+      })
 
-    return data
+      return users
+    },
   })
 
   const isWideVersion = useBreakpointValue({
@@ -68,7 +90,7 @@ const UserList = () => {
               <Spinner />
             </Flex>
           ) : error ? (
-            <Flex>
+            <Flex justify="center">
               <Text>Falha ao obter dados dos usuários</Text>
             </Flex>
           ) : (
@@ -86,7 +108,7 @@ const UserList = () => {
                 </Thead>
 
                 <Tbody>
-                  {data.users.map((user: any) => {
+                  {data.map((user: UserFetching) => {
                     return (
                       <Tr key={user.id}>
                         <Td px={['4', '4', '6']}>

@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { makeServer } from '../services/mirage'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext'
 import { theme } from '../styles/theme'
