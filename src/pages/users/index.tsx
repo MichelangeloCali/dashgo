@@ -37,7 +37,6 @@ const UserList = () => {
         res.json()
       )
       const users = data.users.map((user: UserFetching) => {
-        console.log(users)
         return {
           id: user.id,
           name: user.name,
