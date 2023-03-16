@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
+import Link from 'next/link'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-
 import {
   Box,
   Button,
@@ -12,7 +12,6 @@ import {
   SimpleGrid,
   VStack,
 } from '@chakra-ui/react'
-import Link from 'next/link'
 
 import { Input } from '../../components/Form/Input'
 import { Header } from '../../components/Header'

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useQuery } from '@tanstack/react-query'
+import { RiAddLine } from 'react-icons/ri'
 import {
   Box,
   Button,
@@ -17,7 +18,6 @@ import {
   useBreakpointValue,
   Spinner,
 } from '@chakra-ui/react'
-import { RiAddLine } from 'react-icons/ri'
 
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'

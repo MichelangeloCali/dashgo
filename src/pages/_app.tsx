@@ -1,25 +1,32 @@
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { makeServer } from '../services/mirage'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {
+  QueryClient,
+  QueryClientProvider,
+  Hydrate,
+} from '@tanstack/react-query'
 
 import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext'
 import { theme } from '../styles/theme'
+import { useState } from 'react'
 
 if (process.env.NODE_ENV === 'development') {
   makeServer()
 }
 
-const queryClient = new QueryClient()
-
 export default function App({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient())
+
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider theme={theme}>
-        <SidebarDrawerProvider>
-          <Component {...pageProps} />
-        </SidebarDrawerProvider>
-      </ChakraProvider>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ChakraProvider theme={theme}>
+          <SidebarDrawerProvider>
+            <Component {...pageProps} />
+          </SidebarDrawerProvider>
+        </ChakraProvider>
+      </Hydrate>
     </QueryClientProvider>
   )
 }
