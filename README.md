@@ -18,7 +18,7 @@ ChakraUI
 
 ApexCharts JS (graphics rendering library)
 
-React Query lib
+React Query (Data Fetching cache in React JS)
 
 Mirage JS (fake API)
 
