@@ -30,7 +30,7 @@ interface UserFetching extends User {
 }
 
 const UserList = () => {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
       const data = await fetch('http://localhost:3000/api/users').then((res) =>
@@ -69,6 +69,9 @@ const UserList = () => {
           <Flex mb="8" justify="space-between" align="center">
             <Heading size="lg" fontWeight="normal">
               Usuários
+              {!isLoading && isFetching && (
+                <Spinner size="sm" color="gray.500" ml="4" />
+              )}
             </Heading>
 
             <Link href="/users/create" passHref>
