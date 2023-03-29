@@ -1,5 +1,3 @@
-import Link from 'next/link'
-import { useQuery } from '@tanstack/react-query'
 import { RiAddLine } from 'react-icons/ri'
 import {
   Box,
@@ -22,36 +20,10 @@ import {
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
 import { Pagination } from '../../components/Pagination'
-import { User } from '@/services/mirage'
-
-interface UserFetching extends User {
-  id: string
-  createdAt: string
-}
+import { useUsers } from '@/services/hooks/useUsers'
 
 const UserList = () => {
-  const { data, isLoading, isFetching, error } = useQuery({
-    queryKey: ['users'],
-    queryFn: async () => {
-      const data = await fetch('http://localhost:3000/api/users').then((res) =>
-        res.json()
-      )
-      const users = data.users.map((user: UserFetching) => {
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-          }),
-        }
-      })
-
-      return users
-    },
-  })
+  const { data, isLoading, isFetching, error } = useUsers()
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -74,18 +46,17 @@ const UserList = () => {
               )}
             </Heading>
 
-            <Link href="/users/create" passHref>
-              <Button
-                as="a"
-                size="sm"
-                fontSize="sm"
-                cursor="pointer"
-                colorScheme="pink"
-                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-              >
-                Criar novo
-              </Button>
-            </Link>
+            <Button
+              as="a"
+              href="/users/create"
+              size="sm"
+              fontSize="sm"
+              cursor="pointer"
+              colorScheme="pink"
+              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+            >
+              Criar novo
+            </Button>
           </Flex>
 
           {isLoading ? (
@@ -111,7 +82,7 @@ const UserList = () => {
                 </Thead>
 
                 <Tbody>
-                  {data.map((user: UserFetching) => {
+                  {data?.map((user) => {
                     return (
                       <Tr key={user.id}>
                         <Td px={['4', '4', '6']}>

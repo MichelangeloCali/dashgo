@@ -1,5 +1,4 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import Link from 'next/link'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
@@ -107,11 +106,9 @@ const UserCreate = () => {
 
           <Flex mt="8" justify="flex-end">
             <HStack spacing="4">
-              <Link href="/users" passHref>
-                <Button as="a" colorScheme="whiteAlpha">
-                  Cancelar
-                </Button>
-              </Link>
+              <Button as="a" href="/users" colorScheme="whiteAlpha">
+                Cancelar
+              </Button>
 
               <Button
                 type="submit"

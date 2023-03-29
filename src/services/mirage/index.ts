@@ -2,6 +2,7 @@ import { createServer, Factory, Model } from 'miragejs'
 import { faker } from '@faker-js/faker'
 
 export type User = {
+  id: string
   name: string
   email: string
   created_at: string
